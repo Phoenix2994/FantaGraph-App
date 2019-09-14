@@ -7,6 +7,16 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  role = 'tutti';
+  constructor() { }
+
+
+  checkRole(role: string) {
+    if (role === this.role) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }

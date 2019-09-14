@@ -2,3 +2,57 @@
   max-height: 35vh;
   overflow: hidden;
 }
+
+ion-card-content div label{
+  padding-right:1.3em;
+  padding-left:1.3em;
+}
+
+ion-card-content div input{
+  width:80%;
+}
+
+img{
+  width:40px;
+  height:40px;
+  border-radius: 50%;
+}
+
+ion-item ion-label{
+  margin:auto;
+}
+
+ion-note{
+  font-size:larger;
+}
+
+
+.p{
+  background-color: rgba(255, 255, 0, 0.52);
+}
+
+.d{
+
+  background-color: rgba(83, 193, 42, 0.62);
+}
+
+.c{
+  background-color: rgba(8, 105, 213, 0.72);
+}
+
+.a{
+  background-color:  rgba(255, 97, 86, 0.73);
+}
+
+.tutti{
+  background-color: rgba(130, 125, 125, 0.7);
+}
+
+.list-md{
+  background-color: transparent;
+}
+
+td{
+  text-align: center; 
+  vertical-align: middle;
+}

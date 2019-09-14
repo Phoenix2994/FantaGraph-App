@@ -4,41 +4,124 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Home
+      Giocatori
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
-      <img src="/assets/shapes.svg" alt="" />
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-list lines="none">
-      <ion-list-header>
-        <ion-label>Resources</ion-label>
-      </ion-list-header>
-      <ion-item href="https://ionicframework.com/docs/">
-        <ion-icon slot="start" color="medium" name="book"></ion-icon>
-        <ion-label>Ionic Documentation</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/building/scaffolding">
-        <ion-icon slot="start" color="medium" name="build"></ion-icon>
-        <ion-label>Scaffold Out Your App</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/layout/structure">
-        <ion-icon slot="start" color="medium" name="grid"></ion-icon>
-        <ion-label>Change Your App Layout</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
-        <ion-label>Theme Your App</ion-label>
-      </ion-item>
-    </ion-list>
+  <ion-card class="welcome-card" style="height:fit-content">
+    <ion-card-content class="text-center">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-warning" style="color:white">
+          <input type="radio" name="options" id="option1" value="p" [(ngModel)]="role" autocomplete="off"> P
+        </label>
+        <label class="btn btn-success">
+          <input type="radio" name="options" id="option2" value="d" [(ngModel)]="role" autocomplete="off"> D
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3" value="c" [(ngModel)]="role" autocomplete="off"> C
+        </label>
+        <label class="btn btn-danger">
+          <input type="radio" name="options" id="option3" value="a" [(ngModel)]="role" autocomplete="off"> A
+        </label>
+        <label class="btn btn-dark">
+          <input type="radio" name="options" id="option3" value="tutti" [(ngModel)]="role" autocomplete="off"> TUTTI
+        </label>
+      </div>
+      <form class="form-inline my-2 mx-1">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr [ngClass]="{
+            'p' : checkRole('p'), 
+            'd' : checkRole('d'), 
+            'c' : checkRole('c'), 
+            'a' : checkRole('a'), 
+            'tutti' : checkRole('tutti')}">
+            <th scope="col"></th>
+            <th scope="col">Nome (Squadra)</th>
+            <th scope="col">Ruolo</th>
+            <th scope="col">Quot</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
+            <td>Balotelli (BRE)</td>
+            <td>A</td>
+            <td>19</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
