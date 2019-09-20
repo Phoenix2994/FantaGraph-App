@@ -15,7 +15,12 @@ const routes: Routes = [
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
-  { path: 'player-detail', loadChildren: './player-detail/player-detail.module#PlayerDetailPageModule' }
+  { path: 'player-detail', loadChildren: './player-detail/player-detail.module#PlayerDetailPageModule' },
+  { path: 'team-detail', loadChildren: './team-detail/team-detail.module#TeamDetailPageModule' },
+  { path: 'stadium-detail', loadChildren: './stadium-detail/stadium-detail.module#StadiumDetailPageModule' },
+  { path: 'coach-detail', loadChildren: './coach-detail/coach-detail.module#CoachDetailPageModule' },
+  { path: 'prosecutor-detail', loadChildren: './prosecutor-detail/prosecutor-detail.module#ProsecutorDetailPageModule' },
+  { path: 'president-detail', loadChildren: './president-detail/president-detail.module#PresidentDetailPageModule' }
 ];
 
 @NgModule({

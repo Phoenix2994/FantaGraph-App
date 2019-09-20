@@ -20,6 +20,34 @@ export class AppComponent {
       title: 'Player Detail',
       url: '/player-detail',
       icon: 'list'
+    },
+    {
+      title: 'Prosecutor Detail',
+      url: '/prosecutor-detail',
+      icon: 'list'
+    },
+    {
+      title: 'Team Detail',
+      url: '/team-detail',
+      icon: 'list'
+    }, {
+      title: 'Coach Detail',
+      url: '/coach-detail',
+      icon: 'list'
+    }, {
+      title: 'President Detail',
+      url: '/president-detail',
+      icon: 'list'
+    },
+    {
+      title: 'Stadium Detail',
+      url: '/stadium-detail',
+      icon: 'list'
+    },
+    {
+      title: 'President Detail',
+      url: '/president-detail',
+      icon: 'list'
     }
   ];
 
