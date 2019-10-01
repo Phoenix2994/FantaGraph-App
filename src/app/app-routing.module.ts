@@ -16,6 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
   { path: 'player-detail', loadChildren: './player-detail/player-detail.module#PlayerDetailPageModule' },
+  { path: 'player-detail/:id', loadChildren: './player-detail/player-detail.module#PlayerDetailPageModule' },
   { path: 'team-detail', loadChildren: './team-detail/team-detail.module#TeamDetailPageModule' },
   { path: 'stadium-detail', loadChildren: './stadium-detail/stadium-detail.module#StadiumDetailPageModule' },
   { path: 'coach-detail', loadChildren: './coach-detail/coach-detail.module#CoachDetailPageModule' },

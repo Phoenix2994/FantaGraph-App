@@ -1,22 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Player } from '../model/player';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  role: string;
+  players: Player[];
 
-  role = 'tutti';
-  constructor() { }
+  constructor(private apiService: ApiService) {
+    this.role = 'tutti';
+    this.players = [];
 
+  }
 
-  checkRole(role: string) {
-    if (role === this.role) {
-      return true;
-    } else {
-      return false;
-    }
+  ngOnInit() {
+    this.getPlayers();
+  }
+
+  getPlayers() {
+    this.apiService.getPlayers().subscribe(players => this.players = players);
+    // if service else DB
   }
 
 }
+

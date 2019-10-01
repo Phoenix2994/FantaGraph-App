@@ -36,11 +36,11 @@
       <table class="table table-striped table-dark">
         <thead>
           <tr [ngClass]="{
-            'p' : checkRole('p'), 
-            'd' : checkRole('d'), 
-            'c' : checkRole('c'), 
-            'a' : checkRole('a'), 
-            'tutti' : checkRole('tutti')}">
+            'p' : role =='p', 
+            'd' : role == 'd', 
+            'c' : role == 'c', 
+            'a' : role == 'a', 
+            'tutti' : role == 'tutti'}">
             <th scope="col"></th>
             <th scope="col">Nome (Squadra)</th>
             <th scope="col">Ruolo</th>
@@ -48,78 +48,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <th scope="row"><img src="/assets/player.jpg" alt="" /></th>
-            <td>Balotelli (BRE)</td>
-            <td>A</td>
-            <td>19</td>
-          </tr>
+          <ng-container *ngFor="let player of players">
+            <tr routerLink="/player-detail/{{player.id}}" *ngIf="role.toUpperCase() == player.role">
+              <th scope="row"><img src="{{player.photo}}" alt="" /></th>
+              <td>{{player.name}}, ({{player.team}})</td>
+              <td>{{player.role}}</td>
+              <td>{{player.quot}}</td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </ion-card-content>
