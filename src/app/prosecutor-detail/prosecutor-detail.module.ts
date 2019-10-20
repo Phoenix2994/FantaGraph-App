@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: '',
     component: ProsecutorDetailPage
-  }
+  },
+  { path: ':name', component: ProsecutorDetailPage }
 ];
 
 @NgModule({
@@ -23,4 +24,4 @@ const routes: Routes = [
   ],
   declarations: [ProsecutorDetailPage]
 })
-export class ProsecutorDetailPageModule {}
+export class ProsecutorDetailPageModule { }

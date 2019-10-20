@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: '',
     component: CoachDetailPage
+  },
+  {
+    path: ':name',
+    component: CoachDetailPage
   }
 ];
 

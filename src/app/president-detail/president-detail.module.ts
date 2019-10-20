@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: '',
     component: PresidentDetailPage
+  },
+  {
+    path: ':name',
+    component: PresidentDetailPage
   }
 ];
 
@@ -23,4 +27,4 @@ const routes: Routes = [
   ],
   declarations: [PresidentDetailPage]
 })
-export class PresidentDetailPageModule {}
+export class PresidentDetailPageModule { }

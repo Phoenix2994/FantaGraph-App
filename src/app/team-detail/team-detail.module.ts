@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: '',
     component: TeamDetailPage
-  }
+  },
+  { path: ':name', component: TeamDetailPage }
 ];
 
 @NgModule({

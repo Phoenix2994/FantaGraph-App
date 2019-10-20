@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: '',
     component: PlayerDetailPage
-  }
+  },
+  { path: ':id', component: PlayerDetailPage },
 ];
 
 @NgModule({
@@ -23,4 +24,4 @@ const routes: Routes = [
   ],
   declarations: [PlayerDetailPage]
 })
-export class PlayerDetailPageModule {}
+export class PlayerDetailPageModule { }

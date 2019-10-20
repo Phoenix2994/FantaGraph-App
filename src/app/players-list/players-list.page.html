@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Giocatori
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card" style="height:fit-content">
+    <ion-card-content class="text-center">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-warning" style="color:white">
+          <input type="radio" name="options" id="option1" value="p" [(ngModel)]="role" autocomplete="off"> P
+        </label>
+        <label class="btn btn-success">
+          <input type="radio" name="options" id="option2" value="d" [(ngModel)]="role" autocomplete="off"> D
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3" value="c" [(ngModel)]="role" autocomplete="off"> C
+        </label>
+        <label class="btn btn-danger">
+          <input type="radio" name="options" id="option3" value="a" [(ngModel)]="role" autocomplete="off"> A
+        </label>
+        <label class="btn btn-dark">
+          <input type="radio" name="options" id="option3" value="tutti" [(ngModel)]="role" autocomplete="off"> TUTTI
+        </label>
+      </div>
+      <form class="form-inline my-2 mx-1">
+        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr [ngClass]="{
+            'p' : role =='p', 
+            'd' : role == 'd', 
+            'c' : role == 'c', 
+            'a' : role == 'a', 
+            'tutti' : role == 'tutti'}">
+            <th scope="col"></th>
+            <th scope="col">Nome (Squadra)</th>
+            <th scope="col">Ruolo</th>
+            <th scope="col">Quot</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let player of players">
+            <tr routerLink="/player-detail/{{player.id}}" *ngIf="role.toUpperCase() == player.role">
+              <th scope="row"><img src="{{player.photo}}" alt="" /></th>
+              <td>
+                <table>
+                  <tr>{{player.name}}</tr>
+                  <tr>({{player.team.name}})</tr>
+                </table>
+              </td>
+              <td>{{player.role}}</td>
+              <td>{{player.quot}}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
