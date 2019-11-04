@@ -11,6 +11,11 @@
 
 <ion-content>
   <ion-card class="welcome-card" style="height:fit-content">
+      <ion-toolbar *ngIf="value">
+          <ion-title class="add-txt">
+              AGGIUNGI GIOCATORI ALLA TUA ROSA
+          </ion-title>
+        </ion-toolbar>
     <ion-card-content class="text-center">
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
         <label class="btn btn-warning" style="color:white">
@@ -45,6 +50,7 @@
             <th scope="col">Nome (Squadra)</th>
             <th scope="col">Ruolo</th>
             <th scope="col">Quot</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -59,6 +65,7 @@
               </td>
               <td>{{player.role}}</td>
               <td>{{player.quot}}</td>
+              <td><i *ngIf="value" style="color: rgba(255, 97, 86, 0.73)" class="fa fa-plus"></i></td>
             </tr>
           </ng-container>
         </tbody>

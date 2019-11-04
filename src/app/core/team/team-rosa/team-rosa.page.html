@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Rosa Squadra
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card" style="height:fit-content">
+    <ion-card-content class="text-center">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Nome (Squadra)</th>
+            <th scope="col">Ruolo</th>
+            <th scope="col">Quot</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let player of players">
+            <tr routerLink="/player-detail/{{player.id}}">
+              <th scope="row"><img src="{{player.photo}}" alt="" /></th>
+              <td>
+                <table>
+                  <tr>{{player.name}}</tr>
+                  <tr>({{player.team.name}})</tr>
+                </table>
+              </td>
+              <td>{{player.role}}</td>
+              <td>{{player.quot}}</td>
+              <td></td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

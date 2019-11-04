@@ -15,16 +15,16 @@
       <ion-title class="username" size="large">Username</ion-title>
       <ion-button expand="block">Crea Squadra</ion-button>
       <ion-card class="teams-container">
-        <ion-item routerLink="../players-list" routerDirection="forward">
+        <ion-item routerLink="/tabs" [queryParams]="{'team-id': '24'}" routerDirection="forward">
           <ion-label>SQUADRA 1</ion-label>
         </ion-item>
-        <ion-item routerLink="../players-list" routerDirection="forward">
+        <ion-item routerLink="/tabs" routerDirection="forward">
           <ion-label>SQUADRA 2</ion-label>
         </ion-item>
-        <ion-item routerLink="../players-list" routerDirection="forward">
+        <ion-item routerLink="/tabs" routerDirection="forward">
           <ion-label>SQUADRA 3</ion-label>
         </ion-item>
-        <ion-item routerLink="../players-list" routerDirection="forward">
+        <ion-item routerLink="/tabs" routerDirection="forward">
           <ion-label>SQUADRA 4</ion-label>
         </ion-item>
       </ion-card>

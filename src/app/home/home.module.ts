@@ -15,9 +15,13 @@ import { HomePage } from './home.page';
       {
         path: '',
         component: HomePage
+      },
+      {
+        path: 'tabs', loadChildren:
+          () => import('../core/team/tabs/tabs.module').then(m => m.TabsPageModule)
       }
     ])
   ],
   declarations: [HomePage]
 })
-export class HomePageModule {}
+export class HomePageModule { }

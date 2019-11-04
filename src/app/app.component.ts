@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,45 +14,12 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Home',
-      url: '/home',
+      url: 'home',
       icon: 'home'
     },
     {
       title: 'Players List',
-      url: '/players-list',
-      icon: 'list'
-    },
-    {
-      title: 'Player Detail',
-      url: '/player-detail',
-      icon: 'list'
-    },
-    {
-      title: 'Prosecutor Detail',
-      url: '/prosecutor-detail',
-      icon: 'list'
-    },
-    {
-      title: 'Team Detail',
-      url: '/team-detail',
-      icon: 'list'
-    }, {
-      title: 'Coach Detail',
-      url: '/coach-detail',
-      icon: 'list'
-    }, {
-      title: 'President Detail',
-      url: '/president-detail',
-      icon: 'list'
-    },
-    {
-      title: 'Stadium Detail',
-      url: '/stadium-detail',
-      icon: 'list'
-    },
-    {
-      title: 'President Detail',
-      url: '/president-detail',
+      url: 'players-list',
       icon: 'list'
     }
   ];
@@ -59,7 +27,8 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private route: ActivatedRoute,
   ) {
     this.initializeApp();
   }
@@ -69,5 +38,11 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  getQueryParams() {
+    if (this.route.snapshot.queryParams['team-id']) {
+      return {'team-id' : '24'};
+    } else { return ''; }
   }
 }
