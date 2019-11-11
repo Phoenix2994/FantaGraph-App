@@ -4,6 +4,8 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from './api.service';
+import { Player } from './model/player';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  players: Player[];
   public appPages = [
     {
       title: 'Home',
@@ -29,6 +32,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private route: ActivatedRoute,
+    private apiService: ApiService
   ) {
     this.initializeApp();
   }
@@ -37,12 +41,15 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.getPlayers();
     });
   }
 
-  getQueryParams() {
-    if (this.route.snapshot.queryParams['team-id']) {
-      return {'team-id' : '24'};
-    } else { return ''; }
+  getPlayers() {
+    this.players = [];
+    this.apiService.getPlayers().subscribe(players => {
+      this.players = players;
+      this.apiService.savePlayers(this.players);
+    });
   }
 }

@@ -10,9 +10,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card *ngIf="loading">
+    <ion-spinner></ion-spinner>
+  </ion-card>
+  <ion-card *ngIf="!loading">
     <div>
-      <img src="/assets/player.jpg" alt="" />
+      <img src="{{player.img}}" alt="" />
     </div>
     <ion-grid class="mt-3">
       <ion-row>
@@ -22,7 +25,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          Mario Balotelli
+          {{player.name}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -32,7 +35,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          <a routerLink="/team-detail/Brescia">Brescia</a>
+          <a routerLink="/team-detail/{{player.teamId}}">{{player.teamName}}</a>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -42,7 +45,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          12/08/1990, Palermo
+          {{player.birthdate[2]}}/{{player.birthdate[1]}}/{{player.birthdate[0]}}, {{player.birthplace}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -62,7 +65,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          Punta centrale
+          {{player.position}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -72,7 +75,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          Destro
+          {{player.mainFoot}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -82,19 +85,19 @@
           </strong>
         </ion-col>
         <ion-col>
-          1,89 m
+          {{player.height}}
         </ion-col>
       </ion-row>
       <ion-row>
-          <ion-col>
-            <strong>
-              Procuratore
-            </strong>
-          </ion-col>
-          <ion-col>
-           <a routerLink="/prosecutor-detail/MinoRaiola"> Mino Raiola</a>
-          </ion-col>
-        </ion-row>
+        <ion-col>
+          <strong>
+            Procuratore
+          </strong>
+        </ion-col>
+        <ion-col>
+          <a routerLink="/prosecutor-detail/{{player.prosecutorId}}">{{player.prosecutorName}}</a>
+        </ion-col>
+      </ion-row>
       <ion-row>
         <ion-col>
           <ion-label>
@@ -102,16 +105,119 @@
           </ion-label>
         </ion-col>
         <ion-col>
-          <ion-select placeholder="Scegli una Stagione" class="px-0 py-0">
-            <ion-select-option>Stagione 2015/16</ion-select-option>
-            <ion-select-option>Stagione 2016/17</ion-select-option>
-            <ion-select-option>Stagione 2017/18</ion-select-option>
-            <ion-select-option>Stagione 2018/19</ion-select-option>
-            <ion-select-option>Stagione 2019/20</ion-select-option>
+          <ion-select #stats (ionChange)="onChange(stats.value)" placeholder="Scegli una Stagione" class="px-0 py-0">
+            <ion-select-option value="{{stats.season}}" *ngFor="let stats of player.stats">Stagione {{stats.season}}
+            </ion-select-option>
           </ion-select>
         </ion-col>
       </ion-row>
     </ion-grid>
+  </ion-card>
+  <ion-card *ngIf="!loading">
+    <div *ngFor="let stats of player.stats">
+      <ion-grid style="background-color:white" *ngIf="season == stats.season">
+        <ion-row>
+          <ion-col>
+            <strong>
+              Squadra
+            </strong>
+          </ion-col>
+          <ion-col>
+            {{stats.team}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <strong>
+              Partite giocate
+            </strong>
+          </ion-col>
+          <ion-col>
+            {{stats.playedMatches}}
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!(player.position).includes('porta')">
+          <ion-col>
+            <strong>
+              Gol
+            </strong>
+          </ion-col>
+          <ion-col>
+            {{stats.goals}}
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!(player.position).includes('porta')">
+          <ion-col>
+            <strong>
+              Assist
+            </strong>
+          </ion-col>
+          <ion-col>
+            {{stats.assists}}
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="(player.position).includes('porta')">
+          <ion-col>
+            <strong>
+              Gol subiti
+            </strong>
+          </ion-col>
+          <ion-col>
+            {{stats.concededGoals}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <strong>
+              Autogol
+            </strong>
+          </ion-col>
+          <ion-col>
+            {{stats.ownGoals}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <strong>
+              Cartellini gialli
+            </strong>
+          </ion-col>
+          <ion-col>
+            {{stats.yellowCards}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <strong>
+              Cartellini rossi
+            </strong>
+          </ion-col>
+          <ion-col>
+            {{stats.redCards}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <strong>
+              Mediavoto
+            </strong>
+          </ion-col>
+          <ion-col>
+            {{stats.average}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <strong>
+              FantaMediavoto
+            </strong>
+          </ion-col>
+          <ion-col>
+            {{stats.fantaAverage}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </ion-card>
 
 </ion-content>

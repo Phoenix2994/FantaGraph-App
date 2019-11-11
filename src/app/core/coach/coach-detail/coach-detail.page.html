@@ -10,11 +10,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <div>
-      <img src="/assets/coach.jpg" alt="" />
-    </div>
-    <ion-grid class="mt-3">
+    <ion-card *ngIf="loading">
+        <ion-spinner></ion-spinner>
+      </ion-card>
+  <ion-card *ngIf="!loading">
+    <ion-grid class="mt-1">
       <ion-row>
         <ion-col>
           <strong>
@@ -22,7 +22,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          Vincenzo Montella
+          {{coach.name}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -32,7 +32,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          <a routerLink="/team-detail/Fiorentina">Fiorentina</a>
+          <a routerLink="/team-detail/{{coach.teamId}}">{{coach.teamName}}</a>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -42,7 +42,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          25/10/1974, Napoli
+            {{coach.birthdate[2]}}/{{coach.birthdate[1]}}/{{coach.birthdate[0]}}, {{coach.birthplace}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -52,7 +52,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          Italia
+          {{coach.nationality}}
         </ion-col>
       </ion-row>
       <ion-row>

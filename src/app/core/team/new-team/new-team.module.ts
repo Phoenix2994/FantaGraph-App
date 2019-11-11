@@ -5,14 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TeamDetailPage } from './team-detail.page';
+import { NewTeamPage } from './new-team.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: TeamDetailPage
-  },
-  { path: ':teamId', component: TeamDetailPage }
+    component: NewTeamPage
+  }
 ];
 
 @NgModule({
@@ -22,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TeamDetailPage]
+  declarations: [NewTeamPage]
 })
-export class TeamDetailPageModule {}
+export class NewTeamPageModule {}

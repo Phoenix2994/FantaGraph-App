@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'president-detail', loadChildren: './core/president/president-detail/president-detail.module#PresidentDetailPageModule' },
   { path: 'players-list', loadChildren: './core/player/players-list/players-list.module#PlayersListPageModule' },
   { path: 'tabs', loadChildren: './core/team/tabs/tabs.module#TabsPageModule' },
+  { path: 'new-team', loadChildren: './core/team/new-team/new-team.module#NewTeamPageModule' },
 ];
 
 @NgModule({

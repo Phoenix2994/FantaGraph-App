@@ -12,22 +12,21 @@
 <ion-content>
   <ion-card class="welcome-card" style="height:-webkit-fill-available">
     <ion-card-content class="text-center">
-      <ion-title class="username" size="large">Username</ion-title>
-      <ion-button expand="block">Crea Squadra</ion-button>
-      <ion-card class="teams-container">
-        <ion-item routerLink="/tabs" [queryParams]="{'team-id': '24'}" routerDirection="forward">
-          <ion-label>SQUADRA 1</ion-label>
-        </ion-item>
-        <ion-item routerLink="/tabs" routerDirection="forward">
-          <ion-label>SQUADRA 2</ion-label>
-        </ion-item>
-        <ion-item routerLink="/tabs" routerDirection="forward">
-          <ion-label>SQUADRA 3</ion-label>
-        </ion-item>
-        <ion-item routerLink="/tabs" routerDirection="forward">
-          <ion-label>SQUADRA 4</ion-label>
+      <ion-title class="username" size="large">Phoenix User</ion-title>
+      <ion-card *ngIf="loading">
+        <ion-item>
+          <ion-label>Caricando le tue squadre..</ion-label>
+          <ion-spinner></ion-spinner>
         </ion-item>
       </ion-card>
+
+      <ion-card *ngIf="!loading" class="teams-container">
+        <ion-item *ngFor="let team of user.teams" (click)="setTeamNavigation(team.id)" routerLink="/tabs"
+          routerDirection="forward">
+          <ion-label>{{team.name}}</ion-label>
+        </ion-item>
+      </ion-card>
+      <ion-button expand="block" routerLink="/new-team">Crea nuova Squadra</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

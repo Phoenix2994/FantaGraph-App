@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     component: StadiumDetailPage
   },
-  { path: ':name', component: StadiumDetailPage }
+  { path: ':stadiumId', component: StadiumDetailPage }
 ];
 
 @NgModule({

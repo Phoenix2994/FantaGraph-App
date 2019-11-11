@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Crea Squadra
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card" style="height:-webkit-fill-available">
+    <ion-card-content class="text-center" style="padding-top:10%">
+      <ion-text>Scegli il nome della tua nuova squadra!</ion-text>
+      <ion-list>
+        <ion-item style="margin-top:20%">
+          <ion-label position="stacked">Nome della Squadra <ion-text color="danger">*</ion-text>
+          </ion-label >
+          <ion-input [(ngModel)]="teamName" required type="text"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div class="ion-padding" style="margin-top:20%">
+        <ion-button (click)="createFantateam(teamName, userId)" routerLink="/home" expand="block" class="ion-no-margin">Conferma</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -13,7 +13,7 @@ const routes: Routes = [
     component: PresidentDetailPage
   },
   {
-    path: ':name',
+    path: ':presId',
     component: PresidentDetailPage
   }
 ];

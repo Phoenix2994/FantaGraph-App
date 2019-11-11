@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
+import { Coach } from 'src/app/model/coach';
 
 @Component({
   selector: 'app-coach-detail',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoachDetailPage implements OnInit {
 
-  constructor() { }
+  coach: Coach;
+  loading: boolean;
+
+  constructor(private route: ActivatedRoute, private apiService: ApiService) {
+    this.loading = true;
+   }
 
   ngOnInit() {
+    this.getCoach();
+  }
+
+  getCoach() {
+    this.apiService.getCoach(this.route.snapshot.params.coachId).subscribe(
+      coach => {
+        this.coach = coach;
+        this.loading = false;
+      }
+    );
   }
 
 }

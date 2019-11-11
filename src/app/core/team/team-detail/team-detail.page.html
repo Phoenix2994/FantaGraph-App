@@ -10,9 +10,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card *ngIf=loading>
+    <ion-spinner></ion-spinner>
+  </ion-card>
+  <ion-card *ngIf="!loading">
     <div>
-      <img src="/assets/logo.png" alt="" />
+      <img src="{{team.logo}}" alt="" />
     </div>
     <ion-grid class="mt-3">
       <ion-row>
@@ -22,17 +25,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          Fiorentina
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <strong>
-            Città
-          </strong>
-        </ion-col>
-        <ion-col>
-          Firenze
+          {{team.name}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -42,7 +35,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          <a routerLink="/president-detail/RoccoCommisso">Rocco Commisso</a>
+          <a routerLink="/president-detail/{{team.presidentId}}">{{team.presidentName}}</a>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -52,7 +45,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          <a routerLink="/coach-detail/VincenzoMontella">Vincenzo Montella</a>
+          <a routerLink="/coach-detail/{{team.coachId}}">{{team.coach}}</a>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -62,7 +55,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          <a routerLink="/stadium-detail/ArtemioFranchi">Artemio Franchi</a>
+          <a routerLink="/stadium-detail/{{team.stadiumId}}">{{team.stadiumName}}</a>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -72,7 +65,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          26
+          {{team.playersNum}}
         </ion-col>
       </ion-row>
       <ion-row>
@@ -82,7 +75,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          24,3
+          {{team.avgAge}}
         </ion-col>
       </ion-row>
     </ion-grid>

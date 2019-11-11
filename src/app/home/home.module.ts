@@ -19,6 +19,10 @@ import { HomePage } from './home.page';
       {
         path: 'tabs', loadChildren:
           () => import('../core/team/tabs/tabs.module').then(m => m.TabsPageModule)
+      },
+      {
+        path: 'new-team', loadChildren:
+          () => import('../core/team/new-team/new-team.module').then(m => m.NewTeamPageModule)
       }
     ])
   ],

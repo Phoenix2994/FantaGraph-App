@@ -13,7 +13,7 @@ const routes: Routes = [
     component: CoachDetailPage
   },
   {
-    path: ':name',
+    path: ':coachId',
     component: CoachDetailPage
   }
 ];

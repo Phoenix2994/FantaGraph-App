@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from 'src/app/navigation.service';
+import { Fantateam } from 'src/app/model/fantateam';
+import { Player } from 'src/app/model/player';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-team-dashboard',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamDashboardPage implements OnInit {
 
-  constructor() { }
+  fantaTeam: Fantateam;
+  loading: boolean;
+
+  constructor(private navigationService: NavigationService, private apiService: ApiService) {
+    this.loading = true;
+  }
 
   ngOnInit() {
+    this.getFantateam();
+  }
+
+  getFantateam() {
+    this.apiService.getFantateam(this.navigationService.teamId).subscribe(
+      fantaTeam => {
+        this.fantaTeam = fantaTeam;
+        this.loading = false;
+      });
   }
 
 }

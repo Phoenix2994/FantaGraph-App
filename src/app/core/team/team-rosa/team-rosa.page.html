@@ -17,24 +17,24 @@
           <tr>
             <th scope="col"></th>
             <th scope="col">Nome (Squadra)</th>
-            <th scope="col">Ruolo</th>
-            <th scope="col">Quot</th>
+            <th scope="col">R</th>
+            <th scope="col">Q</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           <ng-container *ngFor="let player of players">
             <tr routerLink="/player-detail/{{player.id}}">
-              <th scope="row"><img src="{{player.photo}}" alt="" /></th>
+              <th scope="row"><img src="{{player.img}}" alt="" /></th>
               <td>
                 <table>
                   <tr>{{player.name}}</tr>
-                  <tr>({{player.team.name}})</tr>
+                  <tr>({{player.teamName}})</tr>
                 </table>
               </td>
-              <td>{{player.role}}</td>
-              <td>{{player.quot}}</td>
-              <td></td>
+              <td>{{player.position.toUpperCase().slice(0,1)}}</td>
+              <td><i>{{player.quot}}</i></td>
+              <td><i (click)="deletePlayer(player.id)" style="color:white" class="fa fa-trash"></i></td>
             </tr>
           </ng-container>
         </tbody>

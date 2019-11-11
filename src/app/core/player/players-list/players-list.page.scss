@@ -3,6 +3,9 @@
     overflow: hidden;
   }
   
+  .header{
+    background-color:white;
+  }
   ion-card-content div label{
     padding-right:1.3em;
     padding-left:1.3em;
@@ -10,6 +13,7 @@
   
   ion-card-content div input{
     width:80%;
+    margin:auto;
   }
   
   img, .sc-ion-card-md-s img{
@@ -28,25 +32,46 @@
   }
   
   
-  .p{
+  .goalKeeperBackG{
     background-color: rgba(255, 255, 0, 0.52);
   }
   
-  .d{
+  .defenderBackG{
   
     background-color: rgba(83, 193, 42, 0.62);
   }
   
-  .c{
+  .midfielderBackG{
     background-color: rgba(8, 105, 213, 0.72);
   }
   
-  .a{
+  .attackBackG{
     background-color:  rgba(255, 97, 86, 0.73);
   }
   
-  .tutti{
+  .tuttiBackG{
     background-color: rgba(130, 125, 125, 0.7);
+  }
+   
+  .goalKeeperColor{
+    color: rgba(255, 255, 0, 0.52);
+  }
+  
+  .defenderColor{
+  
+     color: rgba(83, 193, 42, 0.62);
+  }
+  
+  .midfielderColor{
+    color: rgba(8, 105, 213, 0.72);
+  }
+  
+  .attackColor{
+   color:  rgba(255, 97, 86, 0.73);
+  }
+  
+  .tuttiColor{
+    color: white;
   }
   
   .list-md{
@@ -76,6 +101,7 @@
 }
  .add-txt{
   font-size: 15px;
+  padding:0;
   font-style: italic;
 }
 
