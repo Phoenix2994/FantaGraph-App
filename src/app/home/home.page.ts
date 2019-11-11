@@ -30,6 +30,7 @@ export class HomePage implements OnInit {
   getUserById(userId: number) {
     this.apiService.getUserById(userId).subscribe(user => {
       this.user = user;
+      console.log(this.user);
       this.loading = false;
     });
   }

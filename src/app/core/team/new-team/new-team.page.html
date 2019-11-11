@@ -11,7 +11,10 @@
 
 <ion-content>
   <ion-card class="welcome-card" style="height:-webkit-fill-available">
-    <ion-card-content class="text-center" style="padding-top:10%">
+    <ion-card-content *ngIf="loading">
+      <ion-spinner></ion-spinner>
+    </ion-card-content>
+    <ion-card-content *ngIf="!loading" class="text-center" style="padding-top:10%">
       <ion-text>Scegli il nome della tua nuova squadra!</ion-text>
       <ion-list>
         <ion-item style="margin-top:20%">
@@ -21,7 +24,7 @@
         </ion-item>
       </ion-list>
       <div class="ion-padding" style="margin-top:20%">
-        <ion-button (click)="createFantateam(teamName, userId)" routerLink="/home" expand="block" class="ion-no-margin">Conferma</ion-button>
+        <ion-button (click)="createFantateam(teamName, userId)"  expand="block" class="ion-no-margin">Conferma</ion-button>
       </div>
     </ion-card-content>
   </ion-card>

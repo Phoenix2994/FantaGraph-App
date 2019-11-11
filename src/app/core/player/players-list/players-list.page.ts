@@ -40,7 +40,10 @@ export class PlayersListPage implements OnInit {
   }
 
   addPlayer(playerId: number) {
-    this.apiService.addPlayer(playerId, this.navigationService.teamId).subscribe(console.log('Giocatore aggiunto'));
+    this.apiService.addPlayer(playerId, this.navigationService.teamId).subscribe(
+      result => {
+        console.log('Giocatore aggiunto');
+      });
   }
 
 }
