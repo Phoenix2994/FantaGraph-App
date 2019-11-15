@@ -9,7 +9,7 @@ import { NavigationService } from '../navigation.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit{
   role: string;
   user: User;
   loading: boolean;
@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
     this.userId = 1;
   }
 
-  ngOnInit() {
+  ionViewWillEnter(){
     this.getUserById(this.userId);
     this.navigationService.teamId = 0;
     this.navigationService.userId = this.userId;
@@ -30,12 +30,11 @@ export class HomePage implements OnInit {
   getUserById(userId: number) {
     this.apiService.getUserById(userId).subscribe(user => {
       this.user = user;
-      console.log(this.user);
       this.loading = false;
     });
   }
 
-  setTeamNavigation(teamId: number){
+  setTeamNavigation(teamId: number) {
     this.navigationService.setTeamNavigation(teamId);
 
   }

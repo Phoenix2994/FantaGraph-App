@@ -21,7 +21,7 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Players List',
+      title: 'Elenco Giocatori',
       url: 'players-list',
       icon: 'list'
     }

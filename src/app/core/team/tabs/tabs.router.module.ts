@@ -26,6 +26,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'players-list',
+        children: [
+          {
+            path: '',
+            loadChildren: '../../player/players-list/players-list.module#PlayersListPageModule'
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/team-dashboard',
         pathMatch: 'full'
