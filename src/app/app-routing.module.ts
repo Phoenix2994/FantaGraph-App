@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'select-profile',
     pathMatch: 'full'
   },
   {
@@ -21,6 +21,8 @@ const routes: Routes = [
   { path: 'players-list', loadChildren: './core/player/players-list/players-list.module#PlayersListPageModule' },
   { path: 'tabs', loadChildren: './core/team/tabs/tabs.module#TabsPageModule' },
   { path: 'new-team', loadChildren: './core/team/new-team/new-team.module#NewTeamPageModule' },
+  { path: 'teams-list', loadChildren: './core/team/teams-list/teams-list.module#TeamsListPageModule' },
+  { path: 'select-profile', loadChildren: './select-profile/select-profile.module#SelectProfilePageModule' },
 ];
 
 @NgModule({

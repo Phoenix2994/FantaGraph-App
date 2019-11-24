@@ -29,8 +29,7 @@ export class NewTeamPage implements OnInit {
     this.loading = true;
     this.apiService.createFantateam(teamName, userId).subscribe(
       result => {
-        this.team = result;
-        this.setTeamNavigation(this.team.id);
+        this.navigationService.teamId = result;
         this.router.navigate(['/tabs']);
       }
     );

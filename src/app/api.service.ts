@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Player } from './model/player';
-import { PLAYERS } from './players-list';
 import { of, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NavigationService } from './navigation.service';
@@ -20,8 +19,8 @@ export class ApiService {
 
   getPlayerById(playerId: string): any {
     const params = new HttpParams()
-    .set('showStats', 'true');
-    return this.http.get(`${this.url}/player/${playerId}`, {params});
+      .set('showStats', 'true');
+    return this.http.get(`${this.url}/player/${playerId}`, { params });
   }
 
   getPlayers(): any {
@@ -46,36 +45,43 @@ export class ApiService {
   }
 
   deletePlayer(playerId: number, teamId: number): any {
-    const params = new HttpParams()
-      .set('playerId', playerId.toString());
-    return this.http.delete(`${this.url}/fantateam/${teamId}/player`);
+    const params = new HttpParams();
+    return this.http.post(`${this.url}/fantateam/${teamId}/player/${playerId}/delete`, params);
   }
 
   getPlayersFantateam(teamId: number): any {
-    return this.http.get(`${this.url}/fantateam/${teamId}/player`);
+    return this.http.get(`${this.url}/fantateam/${teamId}/player/`);
   }
 
   getFantateam(teamId: number): any {
     return this.http.get(`${this.url}/fantateam/${teamId}`);
   }
 
-  getTeam(teamId: number): any{
+  getTeam(teamId: number): any {
     return this.http.get(`${this.url}/team/${teamId}`);
   }
 
-  getPresident(presId: number): any{
+  getTeams(): any {
+    return this.http.get(`${this.url}/team/`);
+  }
+
+  getPresident(presId: number): any {
     return this.http.get(`${this.url}/president/${presId}`);
   }
 
-  getCoach(coachId: number): any{
+  getCoach(coachId: number): any {
     return this.http.get(`${this.url}/coach/${coachId}`);
   }
 
-  getStadium(stadiumId: number): any{
+  getStadium(stadiumId: number): any {
     return this.http.get(`${this.url}/stadium/${stadiumId}`);
   }
 
   savePlayers(players: Player[]) {
     this.players = players;
+  }
+
+  checkEncoding(object: any) {
+    return JSON.parse(JSON.stringify(object).replace(/Ã²/g, 'ò').replace(/Ã¨/g, 'è').replace(/Ã¬/g, 'ì').replace(/Ã/g, 'à'));
   }
 }

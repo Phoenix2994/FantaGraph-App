@@ -25,7 +25,7 @@ export class StadiumDetailPage implements OnInit {
   getStadium() {
     this.apiService.getStadium(this.route.snapshot.params.stadiumId).subscribe(
       stadium => {
-        this.stadium = stadium;
+        this.stadium = this.apiService.checkEncoding(stadium);
         this.loading = false;
       }
     );

@@ -13,6 +13,7 @@ export class Player {
     foot: string;
     stats: string;
     role: string;
+    position: string;
     quot: number;
     prosecutor?: Prosecutor;
 }

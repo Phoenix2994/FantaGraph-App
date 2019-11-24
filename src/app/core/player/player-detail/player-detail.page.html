@@ -9,12 +9,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngIf="loading">
+<ion-content [scrollEvents]="true">
+  <ion-card style="margin-bottom:200px" *ngIf="loading">
     <ion-spinner></ion-spinner>
   </ion-card>
   <ion-card *ngIf="!loading">
-    <div>
+    <div [ngClass]="{
+      'goalKeeperBackG' : player.position.slice(0,1) == 'p', 
+      'defenderBackG' : player.position.slice(0,1) == 'd', 
+      'midfielderBackG' : player.position.slice(0,1) == 'c', 
+      'attackBackG' : player.position.slice(0,1) == 'a'}">
       <img src="{{player.img}}" alt="" />
     </div>
     <ion-grid class="mt-3">
@@ -106,7 +110,8 @@
         </ion-col>
         <ion-col>
           <ion-select #stats (ionChange)="onChange(stats.value)" placeholder="Scegli una Stagione" class="px-0 py-0">
-            <ion-select-option value="{{stats.season}}" *ngFor="let stats of player.stats">Stagione {{stats.season}}
+            <ion-select-option value="{{stats.season}}" *ngFor="let stats of order(player.stats)">Stagione
+              {{stats.season}}
             </ion-select-option>
           </ion-select>
         </ion-col>

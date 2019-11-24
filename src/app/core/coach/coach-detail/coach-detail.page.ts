@@ -24,7 +24,7 @@ export class CoachDetailPage implements OnInit {
   getCoach() {
     this.apiService.getCoach(this.route.snapshot.params.coachId).subscribe(
       coach => {
-        this.coach = coach;
+        this.coach = this.apiService.checkEncoding(coach);
         this.loading = false;
       }
     );

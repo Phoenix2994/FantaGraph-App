@@ -24,7 +24,7 @@ export class PresidentDetailPage implements OnInit {
   getPresident() {
     this.apiService.getPresident(this.route.snapshot.params.presId).subscribe(
       president => {
-        this.president = president;
+        this.president = this.apiService.checkEncoding(president);
         this.loading = false;
       }
     );

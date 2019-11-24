@@ -22,10 +22,10 @@ export class NavigationService {
   setTeamNavigation(teamId: number) {
     this.teamId = teamId;
     this.apiService.getFantateam(teamId).subscribe(fantateam =>
-      this.fantaTeam = fantateam
+      this.fantaTeam = this.apiService.checkEncoding(fantateam)
     );
     this.apiService.getPlayersFantateam(teamId).subscribe(players => {
-      this.players = players;
+      this.players = this.apiService.checkEncoding(players);
       console.log(this.players);
     }
     );

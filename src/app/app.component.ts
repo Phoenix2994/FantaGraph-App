@@ -24,6 +24,11 @@ export class AppComponent {
       title: 'Elenco Giocatori',
       url: 'players-list',
       icon: 'list'
+    },
+    {
+      title: 'Elenco Squadre',
+      url: 'teams-list',
+      icon: 'list'
     }
   ];
 
@@ -48,7 +53,7 @@ export class AppComponent {
   getPlayers() {
     this.players = [];
     this.apiService.getPlayers().subscribe(players => {
-      this.players = players;
+      this.players = this.apiService.checkEncoding(players);
       this.apiService.savePlayers(this.players);
     });
   }

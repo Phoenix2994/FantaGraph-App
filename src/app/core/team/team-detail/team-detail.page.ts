@@ -24,7 +24,7 @@ export class TeamDetailPage implements OnInit {
   getTeam() {
     this.apiService.getTeam(this.route.snapshot.params.teamId).subscribe(
       team => {
-        this.team = team;
+        this.team = this.apiService.checkEncoding(team);
         this.loading = false;
       }
     );

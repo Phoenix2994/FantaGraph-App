@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/api.service';
   templateUrl: './team-dashboard.page.html',
   styleUrls: ['./team-dashboard.page.scss'],
 })
-export class TeamDashboardPage implements OnInit {
+export class TeamDashboardPage {
 
   fantaTeam: Fantateam;
   loading: boolean;
@@ -18,14 +18,14 @@ export class TeamDashboardPage implements OnInit {
     this.loading = true;
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.getFantateam();
   }
 
   getFantateam() {
     this.apiService.getFantateam(this.navigationService.teamId).subscribe(
       fantaTeam => {
-        this.fantaTeam = fantaTeam;
+        this.fantaTeam = this.apiService.checkEncoding(fantaTeam);
         this.loading = false;
       });
   }

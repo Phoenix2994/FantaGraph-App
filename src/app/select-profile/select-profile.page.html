@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profili utente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-radio-group (ionChange)="selectUserProfile($event.detail.value)">
+          <ion-list-header>
+            Seleziona il profilo utente desiderato
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Utente Semplice</ion-label>
+            <ion-radio value="user"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Data Scientist</ion-label>
+            <ion-radio value="scientist"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-button expand="block" routerLink="/home">Avanti</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
