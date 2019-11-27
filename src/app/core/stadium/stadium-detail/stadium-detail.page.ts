@@ -10,7 +10,6 @@ import { Stadium } from 'src/app/model/stadium';
 })
 export class StadiumDetailPage implements OnInit {
 
- 
   stadium: Stadium;
   loading: boolean;
 

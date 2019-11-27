@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Allenatori
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card list">
+    <ion-card-content *ngIf="loading" class="text-center">
+      <ion-spinner></ion-spinner>
+    </ion-card-content>
+    <ion-card-content *ngIf="!loading" class="text-center">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">ALLENATORI</th>
+            <th scope="col">SQUADRA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let coach of coaches">
+            <tr routerLink="/coach-detail/{{coach.id}}">
+              <td>{{coach.name}}
+              </td>
+              <td>{{coach.teamName}}
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

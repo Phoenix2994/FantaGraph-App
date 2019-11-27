@@ -7,4 +7,5 @@ export class Coach {
     nationality: string;
     team: Team;
     schema: string;
+    teamId: number;
 }

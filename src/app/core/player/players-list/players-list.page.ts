@@ -4,6 +4,7 @@ import { ApiService } from '../../../api.service';
 import { ActivatedRoute } from '@angular/router';
 import { NavigationService } from 'src/app/navigation.service';
 import { AlertController } from '@ionic/angular';
+import { UserService } from 'src/app/user.service';
 
 
 @Component({
@@ -19,9 +20,10 @@ export class PlayersListPage implements OnInit {
   roleCounter: boolean;
   quotCounter: boolean;
   loading: boolean;
+  profile: string;
 
   constructor(private apiService: ApiService, private navigationService: NavigationService, private route: ActivatedRoute,
-              private alertController: AlertController) {
+              private alertController: AlertController, private userService: UserService) {
     this.role = 'tutti';
     this.players = [];
     this.value = false;
@@ -32,9 +34,7 @@ export class PlayersListPage implements OnInit {
   }
 
   ngOnInit() {
-    if (this.navigationService.teamId !== 0) {
-      this.value = true;
-    }
+    this.getUserProfile();
     this.getPlayers();
   }
 
@@ -47,6 +47,11 @@ export class PlayersListPage implements OnInit {
 
     await alert.present();
   }
+
+  getUserProfile() {
+    this.profile = this.userService.getUserProfile();
+  }
+
   getPlayers() {
     this.players = this.apiService.players;
     if (this.players === undefined) {

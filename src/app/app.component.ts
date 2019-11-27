@@ -17,7 +17,7 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Home',
-      url: 'home',
+      url: 'stats-home',
       icon: 'home'
     },
     {
@@ -26,8 +26,33 @@ export class AppComponent {
       icon: 'list'
     },
     {
+      title: 'Elenco Stagioni',
+      url: 'seasons-list',
+      icon: 'list'
+    },
+    {
       title: 'Elenco Squadre',
       url: 'teams-list',
+      icon: 'list'
+    },
+    {
+      title: 'Elenco Presidenti',
+      url: 'presidents-list',
+      icon: 'list'
+    },
+    {
+      title: 'Elenco Allenatori',
+      url: 'coaches-list',
+      icon: 'list'
+    },
+    {
+      title: 'Elenco Procuratori',
+      url: 'prosecutors-list',
+      icon: 'list'
+    },
+    {
+      title: 'Elenco Stadi',
+      url: 'stadiums-list',
       icon: 'list'
     }
   ];
@@ -55,6 +80,21 @@ export class AppComponent {
     this.apiService.getPlayers().subscribe(players => {
       this.players = this.apiService.checkEncoding(players);
       this.apiService.savePlayers(this.players);
+    });
+    this.apiService.getTeams().subscribe(teams =>{
+      this.apiService.teams = this.apiService.checkEncoding(teams);
+    });
+    this.apiService.getProsecutors().subscribe(prosecutors =>{
+      this.apiService.prosecutors = this.apiService.checkEncoding(prosecutors);
+    });
+    this.apiService.getPresidents().subscribe(presidents =>{
+      this.apiService.presidents = this.apiService.checkEncoding(presidents);
+    });
+    this.apiService.getCoaches().subscribe(coaches =>{
+      this.apiService.coaches = this.apiService.checkEncoding(coaches);
+    });
+    this.apiService.getStadiums().subscribe(stadiums =>{
+      this.apiService.stadiums = this.apiService.checkEncoding(stadiums);
     });
   }
 }

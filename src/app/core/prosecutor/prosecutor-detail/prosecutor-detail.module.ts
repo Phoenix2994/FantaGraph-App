@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     component: ProsecutorDetailPage
   },
-  { path: ':name', component: ProsecutorDetailPage }
+  { path: ':prosId', component: ProsecutorDetailPage }
 ];
 
 @NgModule({

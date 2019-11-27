@@ -23,6 +23,13 @@ const routes: Routes = [
   { path: 'new-team', loadChildren: './core/team/new-team/new-team.module#NewTeamPageModule' },
   { path: 'teams-list', loadChildren: './core/team/teams-list/teams-list.module#TeamsListPageModule' },
   { path: 'select-profile', loadChildren: './select-profile/select-profile.module#SelectProfilePageModule' },
+  { path: 'stats-home', loadChildren: './stats-home/stats-home.module#StatsHomePageModule' },
+  { path: 'presidents-list', loadChildren: './core/president/presidents-list/presidents-list.module#PresidentsListPageModule' },
+  { path: 'coaches-list', loadChildren: './core/coach/coaches-list/coaches-list.module#CoachesListPageModule' },
+  { path: 'stadiums-list', loadChildren: './core/stadium/stadiums-list/stadiums-list.module#StadiumsListPageModule' },
+  { path: 'prosecutors-list', loadChildren: './core/prosecutor/prosecutors-list/prosecutors-list.module#ProsecutorsListPageModule' },
+  { path: 'seasons-list', loadChildren: './core/season/seasons-list/seasons-list.module#SeasonsListPageModule' },
+  { path: 'season-detail', loadChildren: './core/season/season-detail/season-detail.module#SeasonDetailPageModule' },
 ];
 
 @NgModule({

@@ -26,7 +26,6 @@ export class NavigationService {
     );
     this.apiService.getPlayersFantateam(teamId).subscribe(players => {
       this.players = this.apiService.checkEncoding(players);
-      console.log(this.players);
     }
     );
   }

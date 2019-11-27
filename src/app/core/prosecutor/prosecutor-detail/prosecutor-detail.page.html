@@ -1,7 +1,8 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+     <!--<ion-menu-button></ion-menu-button>-->
+
     </ion-buttons>
     <ion-title>
       Dettagli del Procuratore
@@ -9,7 +10,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="!loading">
   <ion-card>
     <ion-grid class="mt-1">
       <ion-row>
@@ -19,7 +20,7 @@
           </strong>
         </ion-col>
         <ion-col>
-          Mino Raiola
+          {{prosecutor.name}}
         </ion-col>
       </ion-row>
     </ion-grid>

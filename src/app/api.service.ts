@@ -3,6 +3,11 @@ import { Player } from './model/player';
 import { of, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { NavigationService } from './navigation.service';
+import { Prosecutor } from './model/prosecutor';
+import { Team } from './model/team';
+import { President } from './model/president';
+import { Coach } from './model/coach';
+import { Stadium } from './model/stadium';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +17,11 @@ export class ApiService {
   private url = 'http://127.0.0.1:8080';
   response: any;
   players: Player[];
+  teams: Team[];
+  presidents: President[];
+  coaches: Coach[];
+  prosecutors: Prosecutor[];
+  stadiums: Stadium[];
 
 
   constructor(private http: HttpClient) {
@@ -69,6 +79,26 @@ export class ApiService {
     return this.http.get(`${this.url}/president/${presId}`);
   }
 
+  getProsecutor(prosId: number): any {
+    return this.http.get(`${this.url}/prosecutor/${prosId}`);
+  }
+
+  getPresidents(): any {
+    return this.http.get(`${this.url}/president/`);
+  }
+
+  getCoaches(): any {
+    return this.http.get(`${this.url}/coach/`);
+  }
+
+  getStadiums(): any {
+    return this.http.get(`${this.url}/stadium/`);
+  }
+
+  getProsecutors(): any {
+    return this.http.get(`${this.url}/prosecutor/`);
+  }
+
   getCoach(coachId: number): any {
     return this.http.get(`${this.url}/coach/${coachId}`);
   }
@@ -84,4 +114,5 @@ export class ApiService {
   checkEncoding(object: any) {
     return JSON.parse(JSON.stringify(object).replace(/Ã²/g, 'ò').replace(/Ã¨/g, 'è').replace(/Ã¬/g, 'ì').replace(/Ã/g, 'à'));
   }
+
 }

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Procuratori
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card list">
+    <ion-card-content *ngIf="loading" class="text-center">
+      <ion-spinner></ion-spinner>
+    </ion-card-content>
+    <ion-card-content *ngIf="!loading" class="text-center">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">PROCURATORE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let prosecutor of prosecutors">
+            <tr *ngIf="checkName(prosecutor.name)" routerLink="/prosecutor-detail/{{prosecutor.id}}">
+              <td>{{prosecutor.name.toUpperCase()}}
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

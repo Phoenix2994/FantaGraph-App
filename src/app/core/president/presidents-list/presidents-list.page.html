@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Presidenti
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card list">
+    <ion-card-content *ngIf="loading" class="text-center">
+      <ion-spinner></ion-spinner>
+    </ion-card-content>
+    <ion-card-content *ngIf="!loading" class="text-center">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">PRESIDENTE</th>
+            <th scope="col">SQUADRA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let president of presidents">
+            <tr routerLink="/president-detail/{{president.id}}">
+              <td>{{president.name}}
+              </td>
+              <td>{{president.ownedTeamName}}
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

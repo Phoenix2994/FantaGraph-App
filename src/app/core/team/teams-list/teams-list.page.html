@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button *ngIf="profile === 'scientist'"></ion-menu-button>
     </ion-buttons>
     <ion-title>
       Squadre
@@ -14,7 +14,7 @@
     <ion-card-content *ngIf="loading" class="text-center">
       <ion-spinner></ion-spinner>
     </ion-card-content>
-    <ion-card-content  *ngIf="!loading" class="text-center">
+    <ion-card-content *ngIf="!loading" class="text-center teams-cnt">
       <table class="table table-striped table-dark">
         <thead>
           <tr>

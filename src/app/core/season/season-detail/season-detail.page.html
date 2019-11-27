@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Stagione {{season}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card header" style="height:fit-content">
+    <ion-card-content *ngIf="loading" class="text-center">
+      <ion-spinner></ion-spinner>
+    </ion-card-content>
+    <ion-card-content *ngIf="!loading" class="text-center">
+      <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-warning" style="color:white">
+          <input type="radio" name="options" id="option1" value="porta" [(ngModel)]="role" autocomplete="off"> P
+        </label>
+        <label class="btn btn-success">
+          <input type="radio" name="options" id="option2" value="difesa" [(ngModel)]="role" autocomplete="off"> D
+        </label>
+        <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3" value="centrocampo" [(ngModel)]="role" autocomplete="off"> C
+        </label>
+        <label class="btn btn-danger">
+          <input type="radio" name="options" id="option3" value="attaccante" [(ngModel)]="role" autocomplete="off"> A
+        </label>
+        <label class="btn btn-dark">
+          <input type="radio" name="options" id="option3" value="tutti" [(ngModel)]="role" autocomplete="off"> TUTTI
+        </label>
+      </div>
+      <form class="form-inline my-2 mx-1">
+        <input class="form-control" [(ngModel)]="searchedPlayer" name="searchedPlayer" type="search"
+          placeholder="Search" aria-label="Search">
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="!loading" class="welcome-card list">
+    <ion-card-content class="text-center players-cnt">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr [ngClass]="{
+            'goalKeeperBackG' : role == 'porta', 
+            'defenderBackG' : role == 'difesa', 
+            'midfielderBackG' : role == 'centrocampo', 
+            'attackBackG' : role == 'attaccante', 
+            'tuttiBackG' : role == 'tutti'}">
+            <th scope="col"></th>
+            <th scope="col">Nome (Squadra)</th>
+            <th (click)="orderByRole()" scope="col">R</th>
+            <th (click)="orderByQuot()" scope="col">MV</th>
+            <th (click)="orderByQuot()" scope="col">FV</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let player of players">
+            <ng-container *ngFor="let stat of player.stats">
+              <tr
+                *ngIf="((player.position).includes(role) || role == 'tutti') && (player.name.toUpperCase()).includes(searchedPlayer.toUpperCase()) && (stat.season == season)">
+                <th [ngClass]="{
+                'goalKeeperBackG' : player.position.slice(0,1) == 'p', 
+                'defenderBackG' : player.position.slice(0,1) == 'd', 
+                'midfielderBackG' : player.position.slice(0,1) == 'c', 
+                'attackBackG' : player.position.slice(0,1) == 'a'}" routerLink="/player-detail/{{player.id}}"
+                  scope="row"><img src="{{player.img}}" alt="" /></th>
+                <td routerLink="/player-detail/{{player.id}}">
+                  <table>
+                    <tr>{{player.name}}</tr>
+                    <tr>({{player.teamName}})</tr>
+                  </table>
+                </td>
+                <td routerLink="/player-detail/{{player.id}}">{{player.position.toUpperCase().slice(0,1)}}</td>
+                <td>{{stat.average}}</td>
+                <td>{{stat.fantaAverage}}</td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </tbody>
+      </table>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

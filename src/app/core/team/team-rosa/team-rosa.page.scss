@@ -3,21 +3,29 @@
     overflow: hidden;
   }
   
-img, .sc-ion-card-md-s img{
-    height:45px;
-    border-radius: 50%;
+  img, .sc-ion-card-md-s img{
+    height:50px;
+    border-radius: 100%;
     max-width:none;
-    width:45px;
+    width:auto;
+    margin:auto;
+  }
+
+  .players-cnt{
+    padding:0;
   }
 
   td {
     text-align: center; 
     vertical-align: middle;
-    padding: 0.6rem;
+    padding: 0.3rem;
   }
   
   table thead th{
     vertical-align: middle;
+  }
+  tbody th{
+    padding:0.3rem;
   }
 
   td > table{
