@@ -64,6 +64,7 @@ export class SeasonDetailPage implements OnInit {
   }*/
   getPlayers() {
     this.players = this.apiService.players;
+    console.log(this.players);
     if (this.players === undefined) {
       this.apiService.getPlayers().subscribe(players => {
         this.players = this.apiService.checkEncoding(players);

@@ -14,7 +14,7 @@ import { Stadium } from './model/stadium';
 })
 export class ApiService {
 
-  private url = 'http://127.0.0.1:8080';
+  private url = 'http://127.0.0.1:8100/api';
   response: any;
   players: Player[];
   teams: Team[];
@@ -55,8 +55,7 @@ export class ApiService {
   }
 
   deletePlayer(playerId: number, teamId: number): any {
-    const params = new HttpParams();
-    return this.http.post(`${this.url}/fantateam/${teamId}/player/${playerId}/delete`, params);
+    return this.http.post(`${this.url}/fantateam/${teamId}/player/${playerId}`, new HttpParams());
   }
 
   getPlayersFantateam(teamId: number): any {
@@ -113,6 +112,14 @@ export class ApiService {
 
   checkEncoding(object: any) {
     return JSON.parse(JSON.stringify(object).replace(/Ã²/g, 'ò').replace(/Ã¨/g, 'è').replace(/Ã¬/g, 'ì').replace(/Ã/g, 'à'));
+  }
+
+  getLogo(teamName: string) {
+    this.teams.forEach(team => {
+      if (team.name === teamName) {
+        return team.logo;
+      }
+    });
   }
 
 }
